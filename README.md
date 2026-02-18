@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aurora Flight Booking
 
-## Getting Started
+Lightweight Next.js flight booking UI demo built with React, Tailwind CSS, and Zustand for state management. This repository contains a small multi-step booking flow (search, select seats, review) and reusable UI components for prototyping booking experiences.
 
-First, run the development server:
+**Project**: - **Description**: Aurora Flight Booking is a front-end demo showcasing a streamlined flight search and booking UI built on Next.js.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Features**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Multi-step flow**: Search, select seats, and review booking.
+- **Component-driven**: Reusable UI primitives and booking components.
+- **Responsive**: Mobile-first layout using Tailwind CSS.
+- **Local state**: Lightweight state using `zustand` for booking data.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Tech Stack**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: Next.js 16
+- **UI**: React 19, Tailwind CSS 4
+- **State**: Zustand
+- **Utilities**: date-fns, clsx, lucide-react
 
-## Learn More
+**Getting Started**
 
-To learn more about Next.js, take a look at the following resources:
+- **Requirements**: Node.js 18+ and npm (or pnpm/yarn).
+- **Install**: Run `npm install` to install dependencies.
+- **Development**: Run `npm run dev` and open http://localhost:3000.
+- **Build**: Run `npm run build` to create a production build.
+- **Start**: Run `npm run start` to serve the production build.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Available Scripts**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **dev**: `next dev` — runs the app in development mode.
+- **build**: `next build` — builds the app for production.
+- **start**: `next start` — starts the production server.
+- **lint**: `eslint` — run the project's linter.
 
-## Deploy on Vercel
+**Project Structure**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **app/**: Next.js app routes and global layout (see [app/layout.tsx](app/layout.tsx) and [app/page.tsx](app/page.tsx)).
+- **components/**: UI and booking components (see [components/booking/FlightCard.tsx](components/booking/FlightCard.tsx)).
+- **hooks/**: Custom hooks and the booking store (see [hooks/useBookingStore.ts](hooks/useBookingStore.ts)).
+- **lib/**: Utilities (see [lib/utils.ts](lib/utils.ts)).
+- **public/**: Static assets.
+- **styles**: Global styles are in [app/globals.css](app/globals.css).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Notes & Development**
+
+- This is a front-end prototype — there is no backend or persistent data store.
+- To extend: add API routes under `app/api` or integrate a backend for persistence.
+
+**Contributing**
+
+- Suggestions and PRs welcome. For quick fixes, open a branch, make changes, and submit a pull request.
+
+**License**
+
+- MIT — adapt and reuse freely.
