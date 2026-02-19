@@ -1,9 +1,13 @@
-'use client';
+"use client";
 
-import GradientBackground from '@/components/layout/GradientBackground';
-import ProgressStepper from '@/components/booking/ProgressStepper';
-import FlightSearch from '@/components/booking/FlightSearch';
-import { useBookingStore } from '@/hooks/useBookingStore';
+import GradientBackground from "@/components/layout/GradientBackground";
+import ProgressStepper from "@/components/booking/ProgressStepper";
+import FlightSearch from "@/components/booking/FlightSearch";
+import FlightResults from "@/components/booking/FlightResults";
+import PassengerDetails from "@/components/booking/PassengerDetails";
+import SeatSelection from "@/components/booking/SeatSelection";
+import PaymentStep from "@/components/booking/PaymentStep";
+import { useBookingStore } from "@/hooks/useBookingStore";
 
 export default function Home() {
   const { currentStep } = useBookingStore();
@@ -23,7 +27,10 @@ export default function Home() {
         <ProgressStepper currentStep={currentStep} />
 
         {currentStep === 1 && <FlightSearch />}
-        {/* Add other step components */}
+        {currentStep === 2 && <FlightResults />}
+        {currentStep === 3 && <PassengerDetails />}
+        {currentStep === 4 && <SeatSelection />}
+        {currentStep === 5 && <PaymentStep />}
       </div>
     </main>
   );
