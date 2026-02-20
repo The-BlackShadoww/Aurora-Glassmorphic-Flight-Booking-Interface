@@ -1,55 +1,55 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import GlassCard from '@/components/ui/GlassCard';
-import Button from '@/components/ui/Button';
-import FlightCard from '@/components/booking/FlightCard';
-import { useBookingStore } from '@/hooks/useBookingStore';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import GlassCard from "@/components/ui/GlassCard";
+import Button from "@/components/ui/Button";
+import FlightCard from "@/components/booking/FlightCard";
+import { useBookingStore } from "@/hooks/useBookingStore";
 
 // Mock flight data
 const MOCK_FLIGHTS = [
   {
-    id: '1',
-    airline: 'Aurora Airways',
-    from: 'NYC',
-    to: 'LAX',
-    departure: '08:00 AM',
-    arrival: '11:30 AM',
-    duration: '5h 30m',
+    id: "1",
+    airline: "Aurora Airways",
+    from: "NYC",
+    to: "LAX",
+    departure: "08:00 AM",
+    arrival: "11:30 AM",
+    duration: "5h 30m",
     price: 299,
     stops: 0,
   },
   {
-    id: '2',
-    airline: 'Sky Express',
-    from: 'NYC',
-    to: 'LAX',
-    departure: '02:15 PM',
-    arrival: '05:45 PM',
-    duration: '5h 30m',
+    id: "2",
+    airline: "Sky Express",
+    from: "NYC",
+    to: "LAX",
+    departure: "02:15 PM",
+    arrival: "05:45 PM",
+    duration: "5h 30m",
     price: 249,
     stops: 0,
   },
   {
-    id: '3',
-    airline: 'Global Airlines',
-    from: 'NYC',
-    to: 'LAX',
-    departure: '06:00 PM',
-    arrival: '09:20 PM',
-    duration: '5h 20m',
+    id: "3",
+    airline: "Global Airlines",
+    from: "NYC",
+    to: "LAX",
+    departure: "06:00 PM",
+    arrival: "09:20 PM",
+    duration: "5h 20m",
     price: 279,
     stops: 0,
   },
   {
-    id: '4',
-    airline: 'Aurora Airways',
-    from: 'NYC',
-    to: 'LAX',
-    departure: '10:30 PM',
-    arrival: '02:00 AM',
-    duration: '5h 30m',
+    id: "4",
+    airline: "Aurora Airways",
+    from: "NYC",
+    to: "LAX",
+    departure: "10:30 PM",
+    arrival: "02:00 AM",
+    duration: "5h 30m",
     price: 199,
     stops: 1,
   },
@@ -66,7 +66,7 @@ export default function FlightResults() {
 
   const handleContinue = () => {
     if (!selected) {
-      alert('Please select a flight');
+      alert("Please select a flight");
       return;
     }
     nextStep();
@@ -80,7 +80,9 @@ export default function FlightResults() {
         transition={{ duration: 0.5 }}
       >
         <div className="mb-8">
-          <h2 className="text-4xl font-bold text-white mb-2">Available Flights</h2>
+          <h2 className="text-4xl font-bold text-white mb-2">
+            Available Flights
+          </h2>
           <p className="text-white/60">Select one of the flights below</p>
         </div>
 
@@ -93,7 +95,7 @@ export default function FlightResults() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               onClick={() => handleSelectFlight(flight.id)}
               className={`cursor-pointer transition-all ${
-                selected === flight.id ? 'ring-2 ring-purple-500' : ''
+                selected === flight.id ? "ring-2 ring-emerald-500" : ""
               }`}
             >
               <FlightCard flight={flight} onSelect={handleSelectFlight} />

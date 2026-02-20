@@ -20,7 +20,7 @@ export default function Button({
         "btn-ripple rounded-xl font-semibold transition-all duration-300",
         "disabled:opacity-50 disabled:cursor-not-allowed",
         variant === "primary" &&
-          "bg-purple-pink-gradient text-white hover:shadow-lg hover:glow-purple-intense",
+          "bg-emerald-green-gradient text-white hover:shadow-lg hover:glow-purple",
         (variant === "secondary" || variant === "outline") &&
           "glass-card text-white hover:bg-white/20",
         variant === "ghost" &&

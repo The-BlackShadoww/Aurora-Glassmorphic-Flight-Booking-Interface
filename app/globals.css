@@ -7,10 +7,10 @@
 
 @theme {
   /* Custom Colors */
-  --color-primary-500: #6366f1;
-  --color-primary-600: #8b5cf6;
-  --color-accent-pink: #ec4899;
-  --color-accent-orange: #f97316;
+  --color-primary-500: #10b981;
+  --color-primary-600: #047857;
+  --color-accent-pink: #34d399;
+  --color-accent-orange: #6ee7b7;
   --color-glass-light: rgba(255, 255, 255, 0.1);
   --color-glass-border: rgba(255, 255, 255, 0.2);
 
@@ -27,8 +27,8 @@
 
   /* Custom Shadows */
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.1);
-  --shadow-glow-purple: 0 0 20px rgba(99, 102, 241, 0.5);
-  --shadow-glow-purple-intense: 0 0 40px rgba(139, 92, 246, 0.8);
+  --shadow-glow-purple: 0 0 20px rgba(16, 185, 129, 0.5);
+  --shadow-glow-purple-intense: 0 0 40px rgba(4, 120, 87, 0.8);
 
   /* Custom Border Radius */
   --radius-glass: 1.5rem;
@@ -52,7 +52,6 @@
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
@@ -64,28 +63,26 @@
 }
 
 @keyframes glow {
-
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
   }
 
   50% {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.8);
+    box-shadow: 0 0 40px rgba(4, 120, 87, 0.8);
   }
 }
 
 @keyframes pulse-glow {
-
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
   }
 
   50% {
     opacity: 0.8;
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.8);
+    box-shadow: 0 0 40px rgba(4, 120, 87, 0.8);
   }
 }
 
@@ -155,18 +152,18 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(99, 102, 241, 0.5);
+    background: rgba(16, 185, 129, 0.5);
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(99, 102, 241, 0.7);
+    background: rgba(16, 185, 129, 0.7);
   }
 
   /* Firefox Scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(99, 102, 241, 0.5) rgba(255, 255, 255, 0.05);
+    scrollbar-color: rgba(16, 185, 129, 0.5) rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -175,7 +172,6 @@
    ============================================ */
 
 @layer components {
-
   /* Glassmorphism Base */
   .glass {
     background: var(--color-glass-light);
@@ -226,19 +222,31 @@
 
   /* Gradient Backgrounds */
   .bg-aurora-gradient {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
   }
 
   .bg-purple-pink-gradient {
-    background: linear-gradient(135deg,
-        var(--color-primary-500) 0%,
-        var(--color-accent-pink) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-500) 0%,
+      var(--color-accent-pink) 100%
+    );
+  }
+
+  .bg-emerald-green-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-500) 0%,
+      var(--color-accent-pink) 100%
+    );
   }
 
   .bg-glass-gradient {
-    background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.05));
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05)
+    );
   }
 
   /* 3D Transform Utilities */
@@ -268,10 +276,18 @@
     box-shadow: var(--shadow-glow-purple-intense);
   }
 
+  .glow-emerald {
+    box-shadow: var(--shadow-glow-purple);
+  }
+
+  .glow-emerald-intense {
+    box-shadow: var(--shadow-glow-purple-intense);
+  }
+
   .input-glow:focus {
     outline: none;
-    border-color: rgba(99, 102, 241, 0.6);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
   }
 
   /* Shimmer Effect for Skeletons */
@@ -285,10 +301,12 @@
     position: absolute;
     inset: 0;
     transform: translateX(-100%);
-    background: linear-gradient(90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
     animation: var(--animate-shimmer);
   }
 
@@ -320,9 +338,11 @@
 
   /* Gradient Text */
   .gradient-text {
-    background: linear-gradient(135deg,
-        var(--color-primary-500) 0%,
-        var(--color-accent-pink) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-500) 0%,
+      var(--color-accent-pink) 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -342,7 +362,6 @@
    ============================================ */
 
 @layer components {
-
   /* Seat Selection Seats */
   .seat {
     @apply w-10 h-10 rounded-lg border-2 transition-all duration-200 cursor-pointer;

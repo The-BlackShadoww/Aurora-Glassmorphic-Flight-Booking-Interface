@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import GlassCard from '@/components/ui/GlassCard';
-import Button from '@/components/ui/Button';
-import Input from '@/components/ui/Input';
-import { useBookingStore } from '@/hooks/useBookingStore';
-import { CreditCard, Lock, Calendar } from 'lucide-react';
-import { useState } from 'react';
+import { motion } from "framer-motion";
+import GlassCard from "@/components/ui/GlassCard";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
+import { useBookingStore } from "@/hooks/useBookingStore";
+import { CreditCard, Lock, Calendar } from "lucide-react";
+import { useState } from "react";
 
 export default function PaymentStep() {
   const { previousStep } = useBookingStore();
-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'wallet'>('card');
+  const [paymentMethod, setPaymentMethod] = useState<"card" | "wallet">("card");
   const [cardDetails, setCardDetails] = useState({
-    cardNumber: '',
-    cardHolder: '',
-    expiryMonth: '',
-    expiryYear: '',
-    cvv: '',
+    cardNumber: "",
+    cardHolder: "",
+    expiryMonth: "",
+    expiryYear: "",
+    cvv: "",
   });
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -36,7 +36,7 @@ export default function PaymentStep() {
       !cardDetails.expiryYear ||
       !cardDetails.cvv
     ) {
-      alert('Please fill in all card details');
+      alert("Please fill in all card details");
       return;
     }
 
@@ -45,7 +45,7 @@ export default function PaymentStep() {
     await new Promise((resolve) => setTimeout(resolve, 2000));
     setIsProcessing(false);
 
-    alert('Payment successful! Your booking is confirmed.');
+    alert("Payment successful! Your booking is confirmed.");
     // Reset or redirect
   };
 
@@ -58,7 +58,9 @@ export default function PaymentStep() {
       >
         <div className="mb-8">
           <h2 className="text-4xl font-bold text-white mb-2">Payment</h2>
-          <p className="text-white/60">Complete your booking by providing payment details</p>
+          <p className="text-white/60">
+            Complete your booking by providing payment details
+          </p>
         </div>
 
         {/* Price Summary */}
@@ -68,7 +70,9 @@ export default function PaymentStep() {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <GlassCard className="p-6 mb-6">
-            <h3 className="text-xl font-semibold text-white mb-4">Booking Summary</h3>
+            <h3 className="text-xl font-semibold text-white mb-4">
+              Booking Summary
+            </h3>
             <div className="space-y-3">
               <div className="flex justify-between text-white/80">
                 <span>Flight Ticket</span>
@@ -97,25 +101,27 @@ export default function PaymentStep() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <GlassCard className="p-6 mb-6">
-            <h3 className="text-xl font-semibold text-white mb-4">Payment Method</h3>
+            <h3 className="text-xl font-semibold text-white mb-4">
+              Payment Method
+            </h3>
             <div className="grid grid-cols-2 gap-4 mb-6">
               <button
-                onClick={() => setPaymentMethod('card')}
+                onClick={() => setPaymentMethod("card")}
                 className={`p-4 rounded-xl transition-all border-2 flex items-center gap-3 ${
-                  paymentMethod === 'card'
-                    ? 'border-purple-500 bg-purple-500/10'
-                    : 'border-white/10 hover:border-white/20'
+                  paymentMethod === "card"
+                    ? "border-emerald-500 bg-emerald-500/10"
+                    : "border-white/10 hover:border-white/20"
                 }`}
               >
                 <CreditCard className="w-6 h-6 text-white" />
                 <span className="text-white font-medium">Credit Card</span>
               </button>
               <button
-                onClick={() => setPaymentMethod('wallet')}
+                onClick={() => setPaymentMethod("wallet")}
                 className={`p-4 rounded-xl transition-all border-2 flex items-center gap-3 ${
-                  paymentMethod === 'wallet'
-                    ? 'border-purple-500 bg-purple-500/10'
-                    : 'border-white/10 hover:border-white/20'
+                  paymentMethod === "wallet"
+                    ? "border-emerald-500 bg-emerald-500/10"
+                    : "border-white/10 hover:border-white/20"
                 }`}
               >
                 <Lock className="w-6 h-6 text-white" />
@@ -124,7 +130,7 @@ export default function PaymentStep() {
             </div>
 
             {/* Card Payment Form */}
-            {paymentMethod === 'card' && (
+            {paymentMethod === "card" && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -135,14 +141,19 @@ export default function PaymentStep() {
                   placeholder="1234 5678 9012 3456"
                   value={cardDetails.cardNumber}
                   onChange={(e) =>
-                    handleCardChange('cardNumber', e.target.value.replace(/\D/g, '').slice(0, 16))
+                    handleCardChange(
+                      "cardNumber",
+                      e.target.value.replace(/\D/g, "").slice(0, 16),
+                    )
                   }
                 />
                 <Input
                   label="Cardholder Name"
                   placeholder="John Doe"
                   value={cardDetails.cardHolder}
-                  onChange={(e) => handleCardChange('cardHolder', e.target.value)}
+                  onChange={(e) =>
+                    handleCardChange("cardHolder", e.target.value)
+                  }
                 />
                 <div className="grid grid-cols-3 gap-4">
                   <Input
@@ -151,8 +162,8 @@ export default function PaymentStep() {
                     value={cardDetails.expiryMonth}
                     onChange={(e) =>
                       handleCardChange(
-                        'expiryMonth',
-                        e.target.value.replace(/\D/g, '').slice(0, 2)
+                        "expiryMonth",
+                        e.target.value.replace(/\D/g, "").slice(0, 2),
                       )
                     }
                   />
@@ -162,8 +173,8 @@ export default function PaymentStep() {
                     value={cardDetails.expiryYear}
                     onChange={(e) =>
                       handleCardChange(
-                        'expiryYear',
-                        e.target.value.replace(/\D/g, '').slice(0, 2)
+                        "expiryYear",
+                        e.target.value.replace(/\D/g, "").slice(0, 2),
                       )
                     }
                   />
@@ -173,17 +184,24 @@ export default function PaymentStep() {
                     type="password"
                     value={cardDetails.cvv}
                     onChange={(e) =>
-                      handleCardChange('cvv', e.target.value.replace(/\D/g, '').slice(0, 4))
+                      handleCardChange(
+                        "cvv",
+                        e.target.value.replace(/\D/g, "").slice(0, 4),
+                      )
                     }
                   />
                 </div>
               </motion.div>
             )}
 
-            {paymentMethod === 'wallet' && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+            {paymentMethod === "wallet" && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
                 <p className="text-white/80">
-                  You will be redirected to your digital wallet provider to complete the payment.
+                  You will be redirected to your digital wallet provider to
+                  complete the payment.
                 </p>
               </motion.div>
             )}
@@ -197,11 +215,15 @@ export default function PaymentStep() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex gap-4 justify-center"
         >
-          <Button variant="outline" onClick={previousStep} disabled={isProcessing}>
+          <Button
+            variant="outline"
+            onClick={previousStep}
+            disabled={isProcessing}
+          >
             Back
           </Button>
           <Button onClick={handlePayment} disabled={isProcessing}>
-            {isProcessing ? 'Processing...' : 'Complete Booking'}
+            {isProcessing ? "Processing..." : "Complete Booking"}
           </Button>
         </motion.div>
       </motion.div>

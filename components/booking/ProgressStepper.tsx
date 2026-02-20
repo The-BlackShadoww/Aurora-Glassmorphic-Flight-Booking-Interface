@@ -28,7 +28,7 @@ export default function ProgressStepper({ currentStep }: ProgressStepperProps) {
         {/* Progress Line */}
         <div className="absolute top-1/2 left-0 right-0 h-1 bg-white/10 -translate-y-1/2 -z-10">
           <motion.div
-            className="h-full bg-gradient-to-r from-purple-500 to-pink-500"
+            className="h-full bg-gradient-to-r from-emerald-500 to-teal-500"
             initial={{ width: "0%" }}
             animate={{
               width: `${((currentStep - 1) / (steps.length - 1)) * 100}%`,
@@ -49,7 +49,7 @@ export default function ProgressStepper({ currentStep }: ProgressStepperProps) {
                 className={cn(
                   "w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-md border-2 transition-all",
                   isCompleted &&
-                    "bg-gradient-to-br from-purple-500 to-pink-500 border-purple-400",
+                    "bg-gradient-to-br from-emerald-500 to-teal-500 border-emerald-400",
                   isCurrent && "bg-white/20 border-white/40 animate-glow",
                   !isCompleted && !isCurrent && "bg-white/5 border-white/10",
                 )}

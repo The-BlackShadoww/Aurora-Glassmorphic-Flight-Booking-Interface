@@ -53,7 +53,7 @@ export default function FlightCard({ flight, onSelect }: FlightCardProps) {
                     <p className="text-white/60 text-sm">{flight.departure}</p>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
-                    <Plane className="w-6 h-6 text-purple-400" />
+                    <Plane className="w-6 h-6 text-emerald-400" />
                     <div className="w-full h-px bg-white/20 my-2" />
                     <p className="text-white/60 text-xs">{flight.duration}</p>
                   </div>
@@ -91,15 +91,15 @@ export default function FlightCard({ flight, onSelect }: FlightCardProps) {
               </h3>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-white/80">
-                  <Luggage className="w-5 h-5 text-purple-400" />
+                  <Luggage className="w-5 h-5 text-emerald-400" />
                   <span>2 checked bags included</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/80">
-                  <Wifi className="w-5 h-5 text-purple-400" />
+                  <Wifi className="w-5 h-5 text-emerald-400" />
                   <span>Free WiFi</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/80">
-                  <Clock className="w-5 h-5 text-purple-400" />
+                  <Clock className="w-5 h-5 text-emerald-400" />
                   <span>Free cancellation within 24h</span>
                 </div>
               </div>
@@ -110,7 +110,7 @@ export default function FlightCard({ flight, onSelect }: FlightCardProps) {
                 e.stopPropagation();
                 onSelect(flight.id);
               }}
-              className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+              className="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-emerald-500/50 transition-all"
             >
               Select Flight
             </button>
