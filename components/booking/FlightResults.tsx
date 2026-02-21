@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import GlassCard from "@/components/ui/GlassCard";
 import Button from "@/components/ui/Button";
 import FlightCard from "@/components/booking/FlightCard";
+import PriceComparisonWidget from "@/components/booking/PriceComparisonWidget";
 import { useBookingStore } from "@/hooks/useBookingStore";
 
 // Mock flight data
@@ -85,6 +86,12 @@ export default function FlightResults() {
           </h2>
           <p className="text-white/60">Select one of the flights below</p>
         </div>
+
+        <PriceComparisonWidget
+          flights={MOCK_FLIGHTS}
+          fromCity="NYC"
+          toCity="LAX"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {MOCK_FLIGHTS.map((flight, index) => (
