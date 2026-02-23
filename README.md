@@ -2,6 +2,22 @@
 
 Lightweight Next.js flight booking UI demo built with React, Tailwind CSS, and Zustand for state management. This repository contains a small multi-step booking flow (search, select seats, review) and reusable UI components for prototyping booking experiences.
 
+## What's New
+
+- **Release date:** 2026-02-23
+- **Summary:** Adds new UI and experience improvements to make fare comparison and passenger entry faster and clearer.
+
+- **Highlights**
+  - **Price comparison widget**: quick side-by-side fare comparisons across options (see `components/booking/PriceComparisonWidget.tsx`).
+  - **Improved passenger details**: enhanced `PassengerDetails` form with better validation and layout.
+  - **UI polish**: updated `GradientBackground` and `GlassCard` styles for a cleaner, modern look.
+
+- **Try it locally**
+  1.  Run `npm install` (if needed) and `npm run dev`.
+  2.  Open http://localhost:3000 and perform a flight search to see the price comparison widget in the results.
+
+If you'd like these notes shortened or converted into a changelog entry, tell me the desired format (release notes, changelog file, or GitHub release body).
+
 **Project**: - **Description**: Aurora Flight Booking is a front-end demo showcasing a streamlined flight search and booking UI built on Next.js.
 
 **Features**
