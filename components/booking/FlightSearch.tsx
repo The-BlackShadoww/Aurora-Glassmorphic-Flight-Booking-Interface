@@ -207,12 +207,12 @@ export default function FlightSearch() {
             </div>
 
             {/* Swap Button */}
-            <div className="hidden lg:flex items-end justify-center pb-3">
+            <div className="hidden lg:flex items-end justify-center pb-3 relative z-[100]">
               <motion.button
                 onClick={swapCities}
                 whileHover={{ scale: 1.1, rotate: 180 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-white/20 transition-all"
+                className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-white/20 transition-all relative z-[100]"
               >
                 <ArrowRightLeft className="w-5 h-5 text-white" />
               </motion.button>
