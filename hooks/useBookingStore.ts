@@ -13,6 +13,18 @@ interface PriceHistory {
   prices: Array<{ price: number; timestamp: number }>;
 }
 
+interface SavedSearch {
+  id: string;
+  tripType: "roundtrip" | "oneway";
+  flightClass: "economy" | "business" | "first";
+  from: string;
+  to: string;
+  departDate: string;
+  returnDate?: string;
+  passengers: { adults: number; children: number; infants: number };
+  createdAt: number;
+}
+
 interface BookingStore {
   currentStep: number;
   selectedFlight: string | null;
@@ -20,6 +32,7 @@ interface BookingStore {
   selectedSeats: string[];
   priceAlerts: PriceAlert[];
   priceHistory: PriceHistory[];
+  savedSearches: SavedSearch[];
   setCurrentStep: (step: number) => void;
   setSelectedFlight: (id: string) => void;
   addPassenger: (passenger: any) => void;
@@ -30,6 +43,9 @@ interface BookingStore {
   removePriceAlert: (id: string) => void;
   recordPrice: (route: string, price: number) => void;
   getPriceHistory: (route: string) => PriceHistory | undefined;
+  addSavedSearch: (search: Omit<SavedSearch, "id" | "createdAt">) => void;
+  removeSavedSearch: (id: string) => void;
+  loadSavedSearches: () => void;
 }
 
 export const useBookingStore = create<BookingStore>((set, get) => ({
@@ -39,6 +55,7 @@ export const useBookingStore = create<BookingStore>((set, get) => ({
   selectedSeats: [],
   priceAlerts: [],
   priceHistory: [],
+  savedSearches: [],
 
   setCurrentStep: (step) => set({ currentStep: step }),
   setSelectedFlight: (id) => set({ selectedFlight: id }),
@@ -102,4 +119,41 @@ export const useBookingStore = create<BookingStore>((set, get) => ({
   getPriceHistory: (route) => {
     return get().priceHistory.find((h) => h.route === route);
   },
+  addSavedSearch: (search) =>
+    set((state) => {
+      const newSearch: SavedSearch = {
+        id: Date.now().toString(),
+        ...search,
+        createdAt: Date.now(),
+      } as SavedSearch;
+      const updated = [...state.savedSearches, newSearch];
+      try {
+        localStorage.setItem("savedSearches", JSON.stringify(updated));
+      } catch (e) {
+        // ignore
+      }
+      return { savedSearches: updated };
+    }),
+  removeSavedSearch: (id) =>
+    set((state) => {
+      const updated = state.savedSearches.filter((s) => s.id !== id);
+      try {
+        localStorage.setItem("savedSearches", JSON.stringify(updated));
+      } catch (e) {
+        // ignore
+      }
+      return { savedSearches: updated };
+    }),
+  loadSavedSearches: () =>
+    set(() => {
+      try {
+        const raw = localStorage.getItem("savedSearches");
+        if (raw) {
+          return { savedSearches: JSON.parse(raw) } as any;
+        }
+      } catch (e) {
+        // ignore
+      }
+      return { savedSearches: [] } as any;
+    }),
 }));

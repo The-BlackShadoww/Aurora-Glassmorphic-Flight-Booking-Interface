@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import GlassCard from "@/components/ui/GlassCard";
 import Button from "@/components/ui/Button";
@@ -17,6 +17,7 @@ import {
   X,
 } from "lucide-react";
 import { useBookingStore } from "@/hooks/useBookingStore";
+import SavedSearches from "@/components/booking/SavedSearches";
 
 // Mock city data
 const CITIES = [
@@ -39,7 +40,7 @@ interface PassengerCount {
 }
 
 export default function FlightSearch() {
-  const { nextStep } = useBookingStore();
+  const { nextStep, addSavedSearch, loadSavedSearches } = useBookingStore();
 
   // Form state
   const [tripType, setTripType] = useState<"roundtrip" | "oneway">("roundtrip");
@@ -105,6 +106,44 @@ export default function FlightSearch() {
 
     // Proceed to next step (flight results)
     nextStep();
+  };
+
+  // Load any saved searches from localStorage on mount
+  useEffect(() => {
+    try {
+      loadSavedSearches();
+    } catch (e) {
+      // ignore
+    }
+  }, [loadSavedSearches]);
+
+  const handleSave = () => {
+    if (!from || !to || !departDate) {
+      alert("Please fill required fields before saving");
+      return;
+    }
+
+    addSavedSearch({
+      tripType,
+      flightClass,
+      from,
+      to,
+      departDate,
+      returnDate: tripType === "roundtrip" ? returnDate : undefined,
+      passengers,
+    });
+
+    alert("Search saved");
+  };
+
+  const applySavedSearch = (s: any) => {
+    setTripType(s.tripType || "roundtrip");
+    setFlightClass(s.flightClass || "economy");
+    setFrom(s.from || "");
+    setTo(s.to || "");
+    setDepartDate(s.departDate || "");
+    setReturnDate(s.returnDate || "");
+    setPassengers(s.passengers || { adults: 1, children: 0, infants: 0 });
   };
 
   return (
@@ -513,7 +552,18 @@ export default function FlightSearch() {
         <button className="glass-card px-6 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/15 transition-all">
           Track Prices
         </button>
+        <button
+          onClick={handleSave}
+          className="glass-card px-6 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/15 transition-all"
+        >
+          Save Search
+        </button>
       </motion.div>
+
+      {/* Saved Searches List */}
+      <div className="mt-6">
+        <SavedSearches onApply={applySavedSearch} />
+      </div>
     </div>
   );
 }
