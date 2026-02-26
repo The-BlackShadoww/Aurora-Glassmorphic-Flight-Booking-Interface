@@ -20,11 +20,11 @@ export default function Button({
         "btn-ripple rounded-xl font-semibold transition-all duration-300",
         "disabled:opacity-50 disabled:cursor-not-allowed",
         variant === "primary" &&
-          "bg-emerald-green-gradient text-white hover:shadow-lg hover:glow-purple",
+          "bg-gradient-to-r from-slate-200 to-slate-300 text-slate-900 hover:shadow-lg",
         (variant === "secondary" || variant === "outline") &&
-          "glass-card text-white hover:bg-white/20",
+          "glass-card text-slate-900 hover:bg-slate-100",
         variant === "ghost" &&
-          "text-white/80 hover:text-white hover:bg-white/10",
+          "text-slate-900/80 hover:text-slate-900 hover:bg-slate-100",
         size === "sm" && "px-4 py-2 text-sm",
         size === "md" && "px-6 py-3 text-base",
         size === "lg" && "px-8 py-4 text-lg",

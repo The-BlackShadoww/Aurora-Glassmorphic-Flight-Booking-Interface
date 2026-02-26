@@ -7,12 +7,14 @@
 
 @theme {
   /* Custom Colors */
-  --color-primary-500: #10b981;
-  --color-primary-600: #047857;
-  --color-accent-pink: #34d399;
-  --color-accent-orange: #6ee7b7;
-  --color-glass-light: rgba(255, 255, 255, 0.1);
-  --color-glass-border: rgba(255, 255, 255, 0.2);
+  /* primary colors now neutral gray for minimal light theme */
+  --color-primary-500: #6b7280; /* slate-500 */
+  --color-primary-600: #4b5563; /* slate-600 */
+  --color-accent-pink: #9ca3af; /* neutral accent */
+  --color-accent-orange: #d1d5db; /* light neutral */
+  /* glass effect should be darker on light background */
+  --color-glass-light: rgba(255, 255, 255, 0.6);
+  --color-glass-border: rgba(0, 0, 0, 0.05);
 
   /* Custom Animations */
   --animate-shimmer: shimmer 2s infinite;
@@ -132,7 +134,8 @@
   }
 
   body {
-    @apply bg-slate-950 text-white antialiased;
+    /* light background with dark text for minimal theme */
+    @apply bg-white text-slate-900 antialiased;
     min-height: 100vh;
   }
 
@@ -152,18 +155,18 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(16, 185, 129, 0.5);
+    background: rgba(107, 114, 128, 0.5);
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(16, 185, 129, 0.7);
+    background: rgba(107, 114, 128, 0.7);
   }
 
   /* Firefox Scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(16, 185, 129, 0.5) rgba(255, 255, 255, 0.05);
+    scrollbar-color: rgba(107, 114, 128, 0.5) rgba(255, 255, 255, 0.05);
   }
 }
 

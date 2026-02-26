@@ -159,8 +159,8 @@ export default function FlightSearch() {
           onClick={() => setTripType("roundtrip")}
           className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
             tripType === "roundtrip"
-              ? "glass-card text-white"
-              : "text-white/60 hover:text-white"
+              ? "glass-card text-slate-900"
+              : "text-slate-900/60 hover:text-slate-900"
           }`}
         >
           Round Trip
@@ -169,8 +169,8 @@ export default function FlightSearch() {
           onClick={() => setTripType("oneway")}
           className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
             tripType === "oneway"
-              ? "glass-card text-white"
-              : "text-white/60 hover:text-white"
+              ? "glass-card text-slate-900"
+              : "text-slate-900/60 hover:text-slate-900"
           }`}
         >
           One Way
@@ -187,11 +187,11 @@ export default function FlightSearch() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {/* From City */}
             <div className="relative">
-              <label className="block text-white/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
                 From
               </label>
               <div className="relative">
-                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40" />
                 <input
                   type="text"
                   value={from}
@@ -233,7 +233,7 @@ export default function FlightSearch() {
                                   {city.country}
                                 </p>
                               </div>
-                              <span className="text-white/80 font-mono">
+                              <span className="text-slate-900/80 font-mono">
                                 {city.code}
                               </span>
                             </div>
@@ -253,17 +253,17 @@ export default function FlightSearch() {
                 whileTap={{ scale: 0.9 }}
                 className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-white/20 transition-all relative z-[100]"
               >
-                <ArrowRightLeft className="w-5 h-5 text-white" />
+                <ArrowRightLeft className="w-5 h-5 text-slate-900" />
               </motion.button>
             </div>
 
             {/* To City */}
             <div className="relative">
-              <label className="block text-white/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
                 To
               </label>
               <div className="relative">
-                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40" />
                 <input
                   type="text"
                   value={to}
@@ -273,7 +273,7 @@ export default function FlightSearch() {
                   }}
                   onFocus={() => setShowToDropdown(true)}
                   placeholder="City or Airport"
-                  className="w-full glass-card pl-12 pr-4 py-3 text-white placeholder-white/40 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-white/15 input-glow"
+                  className="w-full glass-card pl-12 pr-4 py-3 text-slate-900 placeholder-slate-400 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-slate-100 input-glow"
                 />
 
                 {/* Autocomplete Dropdown */}
@@ -317,17 +317,17 @@ export default function FlightSearch() {
 
             {/* Depart Date */}
             <div>
-              <label className="block text-white/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
                 Depart
               </label>
               <div className="relative">
-                <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+                <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40" />
                 <input
                   type="date"
                   value={departDate}
                   onChange={(e) => setDepartDate(e.target.value)}
                   min={new Date().toISOString().split("T")[0]}
-                  className="w-full glass-card pl-12 pr-4 py-3 text-white rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-white/15 input-glow [color-scheme:dark]"
+                  className="w-full glass-card pl-12 pr-4 py-3 text-slate-900 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-slate-100 input-glow"
                 />
               </div>
             </div>
@@ -339,17 +339,17 @@ export default function FlightSearch() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
               >
-                <label className="block text-white/80 text-sm mb-2 font-medium">
+                <label className="block text-slate-900/80 text-sm mb-2 font-medium">
                   Return
                 </label>
                 <div className="relative">
-                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40" />
                   <input
                     type="date"
                     value={returnDate}
                     onChange={(e) => setReturnDate(e.target.value)}
                     min={departDate || new Date().toISOString().split("T")[0]}
-                    className="w-full glass-card pl-12 pr-4 py-3 text-white rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-white/15 input-glow [color-scheme:dark]"
+                    className="w-full glass-card pl-12 pr-4 py-3 text-slate-900 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-slate-100 input-glow"
                   />
                 </div>
               </motion.div>
@@ -357,21 +357,22 @@ export default function FlightSearch() {
 
             {/* Passengers */}
             <div className="relative">
-              <label className="block text-white/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
                 Passengers
               </label>
               <button
                 onClick={() => setShowPassengerDropdown(!showPassengerDropdown)}
-                className="w-full glass-card px-4 py-3 text-white rounded-xl transition-all duration-300 hover:bg-white/15 flex items-center justify-between"
+                className="w-full glass-card px-4 py-3 text-slate-900 rounded-xl transition-all duration-300 hover:bg-slate-100 flex items-center justify-between"
               >
                 <div className="flex items-center gap-2">
-                  <Users className="w-5 h-5 text-white/40" />
+                  <Users className="w-5 h-5 text-slate-900/40" />
                   <span>
                     {totalPassengers} Passenger{totalPassengers > 1 ? "s" : ""}
                   </span>
                 </div>
                 <ChevronDown
-                  className={`w-5 h-5 text-white/40 transition-transform ${showPassengerDropdown ? "rotate-180" : ""}`}
+                  className={`w-5 h-5 text-slate-900/40 transition-transform ${showPassengerDropdown ? "rotate-180" : ""}`}
+                  n
                 />
               </button>
 
@@ -387,26 +388,26 @@ export default function FlightSearch() {
                     {/* Adults */}
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-white font-medium">Adults</p>
-                        <p className="text-white/60 text-sm">12+ years</p>
+                        <p className="text-slate-900 font-medium">Adults</p>
+                        <p className="text-slate-900/60 text-sm">12+ years</p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
                           onClick={() => updatePassengers("adults", false)}
                           disabled={passengers.adults <= 1}
-                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         >
-                          <Minus className="w-4 h-4 text-white" />
+                          <Minus className="w-4 h-4 text-slate-900" />
                         </button>
-                        <span className="text-white font-semibold w-8 text-center">
+                        <span className="text-slate-900 font-semibold w-8 text-center">
                           {passengers.adults}
                         </span>
                         <button
                           onClick={() => updatePassengers("adults", true)}
                           disabled={passengers.adults >= 9}
-                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         >
-                          <Plus className="w-4 h-4 text-white" />
+                          <Plus className="w-4 h-4 text-slate-900" />
                         </button>
                       </div>
                     </div>
@@ -414,26 +415,26 @@ export default function FlightSearch() {
                     {/* Children */}
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-white font-medium">Children</p>
-                        <p className="text-white/60 text-sm">2-11 years</p>
+                        <p className="text-slate-900 font-medium">Children</p>
+                        <p className="text-slate-900/60 text-sm">2-11 years</p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
                           onClick={() => updatePassengers("children", false)}
                           disabled={passengers.children <= 0}
-                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         >
-                          <Minus className="w-4 h-4 text-white" />
+                          <Minus className="w-4 h-4 text-slate-900" />
                         </button>
-                        <span className="text-white font-semibold w-8 text-center">
+                        <span className="text-slate-900 font-semibold w-8 text-center">
                           {passengers.children}
                         </span>
                         <button
                           onClick={() => updatePassengers("children", true)}
                           disabled={passengers.children >= 5}
-                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         >
-                          <Plus className="w-4 h-4 text-white" />
+                          <Plus className="w-4 h-4 text-slate-900" />
                         </button>
                       </div>
                     </div>
@@ -441,33 +442,35 @@ export default function FlightSearch() {
                     {/* Infants */}
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-white font-medium">Infants</p>
-                        <p className="text-white/60 text-sm">Under 2 years</p>
+                        <p className="text-slate-900 font-medium">Infants</p>
+                        <p className="text-slate-900/60 text-sm">
+                          Under 2 years
+                        </p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
                           onClick={() => updatePassengers("infants", false)}
                           disabled={passengers.infants <= 0}
-                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         >
-                          <Minus className="w-4 h-4 text-white" />
+                          <Minus className="w-4 h-4 text-slate-900" />
                         </button>
-                        <span className="text-white font-semibold w-8 text-center">
+                        <span className="text-slate-900 font-semibold w-8 text-center">
                           {passengers.infants}
                         </span>
                         <button
                           onClick={() => updatePassengers("infants", true)}
                           disabled={passengers.infants >= 5}
-                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                          className="w-8 h-8 glass-card rounded-lg flex items-center justify-center hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                         >
-                          <Plus className="w-4 h-4 text-white" />
+                          <Plus className="w-4 h-4 text-slate-900" />
                         </button>
                       </div>
                     </div>
 
                     <button
                       onClick={() => setShowPassengerDropdown(false)}
-                      className="w-full py-2 bg-primary-500/30 hover:bg-primary-500/40 text-white rounded-lg transition-all"
+                      className="w-full py-2 bg-primary-500/30 hover:bg-primary-500/40 text-slate-900 rounded-lg transition-all"
                     >
                       Done
                     </button>
@@ -478,16 +481,17 @@ export default function FlightSearch() {
 
             {/* Class */}
             <div className="relative">
-              <label className="block text-white/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
                 Class
               </label>
               <button
                 onClick={() => setShowClassDropdown(!showClassDropdown)}
-                className="w-full glass-card px-4 py-3 text-white rounded-xl transition-all duration-300 hover:bg-white/15 flex items-center justify-between"
+                className="w-full glass-card px-4 py-3 text-slate-900 rounded-xl transition-all duration-300 hover:bg-slate-100 flex items-center justify-between"
               >
                 <span className="capitalize">{flightClass}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-white/40 transition-transform ${showClassDropdown ? "rotate-180" : ""}`}
+                  className={`w-5 h-5 text-slate-900/40 transition-transform ${showClassDropdown ? "rotate-180" : ""}`}
+                  n
                 />
               </button>
 
@@ -509,8 +513,8 @@ export default function FlightSearch() {
                         }}
                         className={`w-full px-4 py-3 text-left hover:bg-white/10 transition-colors capitalize ${
                           flightClass === classType
-                            ? "bg-white/10 text-primary-500"
-                            : "text-white"
+                            ? "bg-slate-100 text-primary-500"
+                            : "text-slate-900"
                         }`}
                       >
                         {classType}
@@ -542,19 +546,19 @@ export default function FlightSearch() {
         transition={{ duration: 0.5, delay: 0.3 }}
         className="mt-6 flex flex-wrap gap-4 justify-center"
       >
-        <button className="glass-card px-6 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/15 transition-all flex items-center gap-2">
+        <button className="glass-card px-6 py-3 rounded-xl text-slate-900/80 hover:text-slate-900 hover:bg-slate-100 transition-all flex items-center gap-2">
           <Plane className="w-4 h-4" />
           Explore Destinations
         </button>
-        <button className="glass-card px-6 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/15 transition-all">
+        <button className="glass-card px-6 py-3 rounded-xl text-slate-900/80 hover:text-slate-900 hover:bg-slate-100 transition-all">
           Flexible Dates
         </button>
-        <button className="glass-card px-6 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/15 transition-all">
+        <button className="glass-card px-6 py-3 rounded-xl text-slate-900/80 hover:text-slate-900 hover:bg-slate-100 transition-all">
           Track Prices
         </button>
         <button
           onClick={handleSave}
-          className="glass-card px-6 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/15 transition-all"
+          className="glass-card px-6 py-3 rounded-xl text-slate-900/80 hover:text-slate-900 hover:bg-slate-100 transition-all"
         >
           Save Search
         </button>
