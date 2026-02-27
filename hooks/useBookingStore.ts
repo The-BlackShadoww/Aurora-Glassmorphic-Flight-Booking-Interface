@@ -22,6 +22,8 @@ interface SavedSearch {
   departDate: string;
   returnDate?: string;
   passengers: { adults: number; children: number; infants: number };
+  flexibleDates?: boolean;
+  flexibleDays?: number; // how many days before/after to search when flexibility is enabled
   createdAt: number;
 }
 

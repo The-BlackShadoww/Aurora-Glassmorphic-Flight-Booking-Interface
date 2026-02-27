@@ -57,6 +57,10 @@ export default function FlightSearch() {
     infants: 0,
   });
 
+  // flexible dates state
+  const [flexibleDates, setFlexibleDates] = useState(false);
+  const [flexibleDays, setFlexibleDays] = useState(3);
+
   // Dropdown states
   const [showFromDropdown, setShowFromDropdown] = useState(false);
   const [showToDropdown, setShowToDropdown] = useState(false);
@@ -104,6 +108,24 @@ export default function FlightSearch() {
       return;
     }
 
+    // If user requested flexibility but didn't pick days, default to 3
+    if (flexibleDates && !flexibleDays) {
+      setFlexibleDays(3);
+    }
+
+    // In a real app we would include flexibleDates/flexibleDays in the query
+    console.log("Searching flights", {
+      from,
+      to,
+      departDate,
+      returnDate: tripType === "roundtrip" ? returnDate : undefined,
+      tripType,
+      flightClass,
+      passengers,
+      flexibleDates,
+      flexibleDays: flexibleDates ? flexibleDays : undefined,
+    });
+
     // Proceed to next step (flight results)
     nextStep();
   };
@@ -131,6 +153,8 @@ export default function FlightSearch() {
       departDate,
       returnDate: tripType === "roundtrip" ? returnDate : undefined,
       passengers,
+      flexibleDates: flexibleDates ? true : undefined,
+      flexibleDays: flexibleDates ? flexibleDays : undefined,
     });
 
     alert("Search saved");
@@ -144,6 +168,8 @@ export default function FlightSearch() {
     setDepartDate(s.departDate || "");
     setReturnDate(s.returnDate || "");
     setPassengers(s.passengers || { adults: 1, children: 0, infants: 0 });
+    setFlexibleDates(s.flexibleDates || false);
+    setFlexibleDays(s.flexibleDays || 3);
   };
 
   return (
@@ -372,7 +398,6 @@ export default function FlightSearch() {
                 </div>
                 <ChevronDown
                   className={`w-5 h-5 text-slate-900/40 transition-transform ${showPassengerDropdown ? "rotate-180" : ""}`}
-                  n
                 />
               </button>
 
@@ -491,7 +516,6 @@ export default function FlightSearch() {
                 <span className="capitalize">{flightClass}</span>
                 <ChevronDown
                   className={`w-5 h-5 text-slate-900/40 transition-transform ${showClassDropdown ? "rotate-180" : ""}`}
-                  n
                 />
               </button>
 
@@ -550,8 +574,16 @@ export default function FlightSearch() {
           <Plane className="w-4 h-4" />
           Explore Destinations
         </button>
-        <button className="glass-card px-6 py-3 rounded-xl text-slate-900/80 hover:text-slate-900 hover:bg-slate-100 transition-all">
-          Flexible Dates
+        <button
+          onClick={() => setFlexibleDates(!flexibleDates)}
+          className={`glass-card px-6 py-3 rounded-xl transition-all flex items-center gap-2 ${
+            flexibleDates
+              ? "text-slate-900 glass-card"
+              : "text-slate-900/80 hover:text-slate-900 hover:bg-slate-100"
+          }`}
+        >
+          <Plane className="w-4 h-4 rotate-180" />
+          {flexibleDates ? `Flexible ±${flexibleDays}d` : "Flexible Dates"}
         </button>
         <button className="glass-card px-6 py-3 rounded-xl text-slate-900/80 hover:text-slate-900 hover:bg-slate-100 transition-all">
           Track Prices
@@ -563,6 +595,20 @@ export default function FlightSearch() {
           Save Search
         </button>
       </motion.div>
+      {flexibleDates && (
+        <div className="mt-2 flex items-center justify-center gap-2">
+          <span className="text-white/80 text-sm">Range:</span>
+          <select
+            value={flexibleDays}
+            onChange={(e) => setFlexibleDays(Number(e.target.value))}
+            className="glass-card bg-white/10 text-slate-900 px-3 py-2 rounded-xl"
+          >
+            {[1, 2, 3, 5, 7].map((d) => (
+              <option key={d} value={d}>{`±${d} days`}</option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {/* Saved Searches List */}
       <div className="mt-6">

@@ -40,6 +40,9 @@ export default function SavedSearches({ onApply }: Props) {
                 {s.tripType === "roundtrip" && s.returnDate
                   ? ` • Return ${s.returnDate}`
                   : ""}
+                {s.flexibleDates && s.flexibleDays
+                  ? ` • Flexible ±${s.flexibleDays}d`
+                  : ""}
                 {` • ${s.passengers.adults + s.passengers.children + s.passengers.infants} pax`}
               </div>
             </div>

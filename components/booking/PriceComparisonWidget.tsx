@@ -9,7 +9,13 @@ import { TrendingDown, Bell, X } from "lucide-react";
 import { useBookingStore } from "@/hooks/useBookingStore";
 
 interface PriceComparisonWidgetProps {
-  flights: Array<{ id: string; airline: string; price: number; from: string; to: string }>;
+  flights: Array<{
+    id: string;
+    airline: string;
+    price: number;
+    from: string;
+    to: string;
+  }>;
   fromCity: string;
   toCity: string;
 }
@@ -36,7 +42,7 @@ export default function PriceComparisonWidget({
   const averagePrice =
     flights.reduce((sum, f) => sum + f.price, 0) / flights.length;
   const savingsPercent = Math.round(
-    ((averagePrice - lowestPrice) / averagePrice) * 100
+    ((averagePrice - lowestPrice) / averagePrice) * 100,
   );
 
   const routeAlerts = priceAlerts.filter((a) => a.route === route);
@@ -49,7 +55,9 @@ export default function PriceComparisonWidget({
       return;
     }
     addPriceAlert(route, Number(targetPrice));
-    setAlertMessage(`Alert set! We'll notify you if prices drop below $${targetPrice}`);
+    setAlertMessage(
+      `Alert set! We'll notify you if prices drop below $${targetPrice}`,
+    );
     setTargetPrice("");
     setTimeout(() => setShowAlertForm(false), 2000);
   };
@@ -78,7 +86,9 @@ export default function PriceComparisonWidget({
           {/* Lowest Price */}
           <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm border border-white/20">
             <p className="text-white/60 text-sm mb-2">Lowest Price</p>
-            <p className="text-3xl font-bold text-emerald-400">${lowestPrice}</p>
+            <p className="text-3xl font-bold text-emerald-400">
+              ${lowestPrice}
+            </p>
           </div>
 
           {/* Average Price */}
@@ -92,7 +102,9 @@ export default function PriceComparisonWidget({
           {/* Savings */}
           <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm border border-white/20">
             <p className="text-white/60 text-sm mb-2">Potential Savings</p>
-            <p className="text-3xl font-bold text-blue-400">{savingsPercent}%</p>
+            <p className="text-3xl font-bold text-blue-400">
+              {savingsPercent}%
+            </p>
           </div>
         </div>
 
@@ -102,7 +114,7 @@ export default function PriceComparisonWidget({
             <Button
               onClick={() => setShowAlertForm(true)}
               className="w-full flex items-center justify-center gap-2"
-              variant={routeAlerts.length > 0 ? "outline" : "default"}
+              variant={routeAlerts.length > 0 ? "outline" : undefined}
             >
               <Bell size={18} />
               {routeAlerts.length > 0
@@ -176,12 +188,17 @@ export default function PriceComparisonWidget({
                   <div className="flex items-center gap-2">
                     <Bell
                       size={16}
-                      className={isPriceBelowTarget ? "text-emerald-400" : "text-white/60"}
+                      className={
+                        isPriceBelowTarget
+                          ? "text-emerald-400"
+                          : "text-white/60"
+                      }
                     />
                     <span className="text-white text-sm">
                       {isPriceBelowTarget ? (
                         <span className="text-emerald-400 font-semibold">
-                          ✨ Alert! Price is ${lowestPrice} (below target ${alert.targetPrice})
+                          ✨ Alert! Price is ${lowestPrice} (below target $
+                          {alert.targetPrice})
                         </span>
                       ) : (
                         <>Target price: ${alert.targetPrice}</>
