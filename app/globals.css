@@ -139,6 +139,21 @@
     min-height: 100vh;
   }
 
+  /* Dark mode overrides (class strategy) */
+  .dark body {
+    @apply bg-slate-900 text-white;
+  }
+
+  /* base color variables can be overridden in dark mode too */
+  .dark {
+    --color-primary-500: #9ca3af; /* lighter accent for dark */
+    --color-primary-600: #d1d5db;
+    --color-accent-pink: #f472b6;
+    --color-accent-orange: #fb923c;
+    --color-glass-light: rgba(0, 0, 0, 0.4);
+    --color-glass-border: rgba(255, 255, 255, 0.1);
+  }
+
   /* Focus visible for accessibility */
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-primary-500;
@@ -192,6 +207,12 @@
     box-shadow: var(--shadow-glass);
     border-radius: 1.5rem;
     transition: all 300ms;
+  }
+
+  /* dark variant for glass-card (using variables above) */
+  .dark .glass-card {
+    background: var(--color-glass-light);
+    border-color: var(--color-glass-border);
   }
 
   @media (max-width: 640px) {

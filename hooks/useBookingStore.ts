@@ -13,7 +13,7 @@ interface PriceHistory {
   prices: Array<{ price: number; timestamp: number }>;
 }
 
-interface SavedSearch {
+export interface SavedSearch {
   id: string;
   tripType: "roundtrip" | "oneway";
   flightClass: "economy" | "business" | "first";

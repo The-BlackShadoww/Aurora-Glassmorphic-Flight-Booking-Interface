@@ -12,6 +12,7 @@ Lightweight Next.js flight booking UI demo built with React, Tailwind CSS, and Z
   - **Price comparison widget**: quick side-by-side fare comparisons across options (see `components/booking/PriceComparisonWidget.tsx`).
   - **Improved passenger details**: enhanced `PassengerDetails` form with better validation and layout.
   - **UI polish**: updated `GradientBackground` and `GlassCard` styles for a cleaner, modern look.
+- **Theme support**: light/dark mode with persistent toggle in the header.
 
 - **Try it locally**
   1.  Run `npm install` (if needed) and `npm run dev`.

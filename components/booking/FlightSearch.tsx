@@ -14,9 +14,8 @@ import {
   ChevronDown,
   Plus,
   Minus,
-  X,
 } from "lucide-react";
-import { useBookingStore } from "@/hooks/useBookingStore";
+import { useBookingStore, SavedSearch } from "@/hooks/useBookingStore";
 import SavedSearches from "@/components/booking/SavedSearches";
 
 // Mock city data
@@ -134,7 +133,7 @@ export default function FlightSearch() {
   useEffect(() => {
     try {
       loadSavedSearches();
-    } catch (e) {
+    } catch {
       // ignore
     }
   }, [loadSavedSearches]);
@@ -160,7 +159,7 @@ export default function FlightSearch() {
     alert("Search saved");
   };
 
-  const applySavedSearch = (s: any) => {
+  const applySavedSearch = (s: SavedSearch) => {
     setTripType(s.tripType || "roundtrip");
     setFlightClass(s.flightClass || "economy");
     setFrom(s.from || "");
@@ -185,8 +184,8 @@ export default function FlightSearch() {
           onClick={() => setTripType("roundtrip")}
           className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
             tripType === "roundtrip"
-              ? "glass-card text-slate-900"
-              : "text-slate-900/60 hover:text-slate-900"
+              ? "glass-card text-slate-900 dark:text-white"
+              : "text-slate-900/60 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
           }`}
         >
           Round Trip
@@ -195,8 +194,8 @@ export default function FlightSearch() {
           onClick={() => setTripType("oneway")}
           className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
             tripType === "oneway"
-              ? "glass-card text-slate-900"
-              : "text-slate-900/60 hover:text-slate-900"
+              ? "glass-card text-slate-900 dark:text-white"
+              : "text-slate-900/60 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
           }`}
         >
           One Way
@@ -213,11 +212,11 @@ export default function FlightSearch() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {/* From City */}
             <div className="relative">
-              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 dark:text-slate-200 text-sm mb-2 font-medium">
                 From
               </label>
               <div className="relative">
-                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40" />
+                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40 dark:text-slate-300/40" />
                 <input
                   type="text"
                   value={from}
@@ -227,7 +226,7 @@ export default function FlightSearch() {
                   }}
                   onFocus={() => setShowFromDropdown(true)}
                   placeholder="City or Airport"
-                  className="w-full glass-card pl-12 pr-4 py-3 text-white placeholder-white/40 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-white/15 input-glow"
+                  className="w-full glass-card pl-12 pr-4 py-3 text-white placeholder-white/40 dark:placeholder-slate-300 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-white/15 input-glow"
                 />
 
                 {/* Autocomplete Dropdown */}
@@ -259,7 +258,7 @@ export default function FlightSearch() {
                                   {city.country}
                                 </p>
                               </div>
-                              <span className="text-slate-900/80 font-mono">
+                              <span className="text-slate-900/80 dark:text-slate-300/80 font-mono">
                                 {city.code}
                               </span>
                             </div>
@@ -272,24 +271,24 @@ export default function FlightSearch() {
             </div>
 
             {/* Swap Button */}
-            <div className="hidden lg:flex items-end justify-center pb-3 relative z-[100]">
+            <div className="hidden lg:flex items-end justify-center pb-3 relative z-100">
               <motion.button
                 onClick={swapCities}
                 whileHover={{ scale: 1.1, rotate: 180 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-white/20 transition-all relative z-[100]"
+                className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-white/20 transition-all relative z-100"
               >
-                <ArrowRightLeft className="w-5 h-5 text-slate-900" />
+                <ArrowRightLeft className="w-5 h-5 text-slate-900 dark:text-slate-300" />
               </motion.button>
             </div>
 
             {/* To City */}
             <div className="relative">
-              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 dark:text-slate-200 text-sm mb-2 font-medium">
                 To
               </label>
               <div className="relative">
-                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40" />
+                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40 dark:text-slate-300/40" />
                 <input
                   type="text"
                   value={to}
@@ -299,7 +298,7 @@ export default function FlightSearch() {
                   }}
                   onFocus={() => setShowToDropdown(true)}
                   placeholder="City or Airport"
-                  className="w-full glass-card pl-12 pr-4 py-3 text-slate-900 placeholder-slate-400 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-slate-100 input-glow"
+                  className="w-full glass-card pl-12 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-300 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-slate-100 input-glow"
                 />
 
                 {/* Autocomplete Dropdown */}
@@ -343,17 +342,17 @@ export default function FlightSearch() {
 
             {/* Depart Date */}
             <div>
-              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 dark:text-slate-200 text-sm mb-2 font-medium">
                 Depart
               </label>
               <div className="relative">
-                <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40" />
+                <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40 dark:text-slate-300/40" />
                 <input
                   type="date"
                   value={departDate}
                   onChange={(e) => setDepartDate(e.target.value)}
                   min={new Date().toISOString().split("T")[0]}
-                  className="w-full glass-card pl-12 pr-4 py-3 text-slate-900 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-slate-100 input-glow"
+                  className="w-full glass-card pl-12 pr-4 py-3 text-slate-900 dark:text-white rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-slate-100 input-glow"
                 />
               </div>
             </div>
@@ -365,17 +364,17 @@ export default function FlightSearch() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
               >
-                <label className="block text-slate-900/80 text-sm mb-2 font-medium">
+                <label className="block text-slate-900/80 dark:text-slate-200 text-sm mb-2 font-medium">
                   Return
                 </label>
                 <div className="relative">
-                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40" />
+                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900/40 dark:text-slate-300/40" />
                   <input
                     type="date"
                     value={returnDate}
                     onChange={(e) => setReturnDate(e.target.value)}
                     min={departDate || new Date().toISOString().split("T")[0]}
-                    className="w-full glass-card pl-12 pr-4 py-3 text-slate-900 rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-slate-100 input-glow"
+                    className="w-full glass-card pl-12 pr-4 py-3 text-slate-900 dark:text-white rounded-xl transition-all duration-300 focus:border-primary-500/60 focus:bg-slate-100 input-glow"
                   />
                 </div>
               </motion.div>
@@ -383,21 +382,21 @@ export default function FlightSearch() {
 
             {/* Passengers */}
             <div className="relative">
-              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 dark:text-slate-200 text-sm mb-2 font-medium">
                 Passengers
               </label>
               <button
                 onClick={() => setShowPassengerDropdown(!showPassengerDropdown)}
-                className="w-full glass-card px-4 py-3 text-slate-900 rounded-xl transition-all duration-300 hover:bg-slate-100 flex items-center justify-between"
+                className="w-full glass-card px-4 py-3 text-slate-900 dark:text-white rounded-xl transition-all duration-300 hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-between"
               >
                 <div className="flex items-center gap-2">
-                  <Users className="w-5 h-5 text-slate-900/40" />
+                  <Users className="w-5 h-5 text-slate-900/40 dark:text-slate-300/40" />
                   <span>
                     {totalPassengers} Passenger{totalPassengers > 1 ? "s" : ""}
                   </span>
                 </div>
                 <ChevronDown
-                  className={`w-5 h-5 text-slate-900/40 transition-transform ${showPassengerDropdown ? "rotate-180" : ""}`}
+                  className={`w-5 h-5 text-slate-900/40 dark:text-slate-300/40 transition-transform ${showPassengerDropdown ? "rotate-180" : ""}`}
                 />
               </button>
 
@@ -413,8 +412,12 @@ export default function FlightSearch() {
                     {/* Adults */}
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-slate-900 font-medium">Adults</p>
-                        <p className="text-slate-900/60 text-sm">12+ years</p>
+                        <p className="text-slate-900 dark:text-white font-medium">
+                          Adults
+                        </p>
+                        <p className="text-slate-900/60 dark:text-slate-300/60 text-sm">
+                          12+ years
+                        </p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
@@ -506,7 +509,7 @@ export default function FlightSearch() {
 
             {/* Class */}
             <div className="relative">
-              <label className="block text-slate-900/80 text-sm mb-2 font-medium">
+              <label className="block text-slate-900/80 dark:text-slate-200 text-sm mb-2 font-medium">
                 Class
               </label>
               <button
@@ -515,7 +518,7 @@ export default function FlightSearch() {
               >
                 <span className="capitalize">{flightClass}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-slate-900/40 transition-transform ${showClassDropdown ? "rotate-180" : ""}`}
+                  className={`w-5 h-5 text-slate-900/40 dark:text-slate-300/40 transition-transform ${showClassDropdown ? "rotate-180" : ""}`}
                 />
               </button>
 
@@ -528,22 +531,24 @@ export default function FlightSearch() {
                     exit={{ opacity: 0, y: -10 }}
                     className="absolute z-50 w-full mt-2 glass-card rounded-xl overflow-hidden"
                   >
-                    {["economy", "business", "first"].map((classType) => (
-                      <button
-                        key={classType}
-                        onClick={() => {
-                          setFlightClass(classType as any);
-                          setShowClassDropdown(false);
-                        }}
-                        className={`w-full px-4 py-3 text-left hover:bg-white/10 transition-colors capitalize ${
-                          flightClass === classType
-                            ? "bg-slate-100 text-primary-500"
-                            : "text-slate-900"
-                        }`}
-                      >
-                        {classType}
-                      </button>
-                    ))}
+                    {(["economy", "business", "first"] as const).map(
+                      (classType) => (
+                        <button
+                          key={classType}
+                          onClick={() => {
+                            setFlightClass(classType);
+                            setShowClassDropdown(false);
+                          }}
+                          className={`w-full px-4 py-3 text-left hover:bg-white/10 dark:hover:bg-slate-800 transition-colors capitalize ${
+                            flightClass === classType
+                              ? "bg-slate-100 text-primary-500 dark:bg-slate-800"
+                              : "text-slate-900 dark:text-white"
+                          }`}
+                        >
+                          {classType}
+                        </button>
+                      ),
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
