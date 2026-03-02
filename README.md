@@ -4,7 +4,18 @@ Lightweight Next.js flight booking UI demo built with React, Tailwind CSS, and Z
 
 ## What's New
 
-- **Release date:** 2026-02-23
+### 2026-03-02 (current)
+
+- **Summary:** Added accessibility enhancements, basic unit tests, and updated documentation.
+
+- **Highlights**
+  - **Improved keyboard navigation** across all booking steps and form fields.
+  - **ARIA labels and roles** added to key interactive components for screen-reader support.
+  - **Basic Jest/React Testing Library tests** for `FlightSearch` and `FlightResults` components.
+  - **Documentation**: expanded README with clearer setup instructions and architecture overview.
+
+### 2026-02-23
+
 - **Summary:** Adds new UI and experience improvements to make fare comparison and passenger entry faster and clearer.
 
 - **Highlights**
@@ -28,13 +39,16 @@ If you'd like these notes shortened or converted into a changelog entry, tell me
 - **Component-driven**: Reusable UI primitives and booking components.
 - **Responsive**: Mobile-first layout using Tailwind CSS.
 - **Local state**: Lightweight state using `zustand` for booking data.
+- **Accessibility-first**: Keyboard support and ARIA enhancements throughout.
+- **Unit tests**: Includes baseline Jest tests for core components.
 
 **Tech Stack**
 
-- **Framework**: Next.js 16
-- **UI**: React 19, Tailwind CSS 4
+- **Framework**: Next.js 17
+- **UI**: React 20, Tailwind CSS 4
 - **State**: Zustand
 - **Utilities**: date-fns, clsx, lucide-react
+- **Testing**: Jest & React Testing Library
 
 **Getting Started**
 
