@@ -67,10 +67,58 @@ If you'd like these notes shortened or converted into a changelog entry, tell me
 
 **Project Structure**
 
-- **app/**: Next.js app routes and global layout (see [app/layout.tsx](app/layout.tsx) and [app/page.tsx](app/page.tsx)).
-- **components/**: UI and booking components (see [components/booking/FlightCard.tsx](components/booking/FlightCard.tsx)).
-- **hooks/**: Custom hooks and the booking store (see [hooks/useBookingStore.ts](hooks/useBookingStore.ts)).
-- **lib/**: Utilities (see [lib/utils.ts](lib/utils.ts)).
+The repository is organized as follows:
+
+```
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── tsconfig.json
+├── app/
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── booking/
+│   │   ├── FlightCard.tsx
+│   │   ├── FlightResults.tsx
+│   │   ├── FlightSearch.tsx
+│   │   ├── PassengerDetails.tsx
+│   │   ├── PaymentStep.tsx
+│   │   ├── PriceComparisonWidget.tsx
+│   │   ├── ProgressStepper.tsx
+│   │   ├── SavedSearches.tsx
+│   │   └── SeatSelection.tsx
+│   ├── layout/
+│   │   ├── GradientBackground.tsx
+│   │   └── ThemeProvider.tsx
+│   └── ui/
+│       ├── Button.tsx
+│       ├── GlassCard.tsx
+│       ├── Input.tsx
+│       └── ThemeToggle.tsx
+├── hooks/
+│   ├── useBookingStore.ts
+│   └── use/   (additional hook utilities)
+├── lib/
+│   └── utils.ts
+├── public/
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+└── (other config and helper files)
+```
+
+- **app/**: Next.js app routes and global layout.
+- **components/**: UI and booking components.
+- **hooks/**: Custom hooks and the booking store.
+- **lib/**: Utilities.
 - **public/**: Static assets.
 - **styles**: Global styles are in [app/globals.css](app/globals.css).
 
